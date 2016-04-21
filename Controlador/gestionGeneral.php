@@ -15,4 +15,3 @@ switch ($accion) {
         $dao->listarMunicipio($select);
         break;
 }
-?>

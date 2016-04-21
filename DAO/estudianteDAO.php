@@ -3,12 +3,12 @@
 class estudianteDAO {
 
     private $con;
-    private $objCon;
+    private $object;
 
     function estudianteDAO() {
         require '../Modelo/clsConexion.php';
-        $this->objCon = new clsConexion();
-        $this->con = $this->objCon->conectar();
+        $this->object = new clsConexion();
+        $this->con = $this->object->conectar();
     }
 
     public function guardar(clsEstudiante $obj) {
@@ -17,13 +17,13 @@ class estudianteDAO {
                 $obj->getCodigo() . "','" . $obj->getNombre() . "','" . $obj->getApellido() . "','" . $obj->getCedula() . "'," .
                 $obj->getEdad() . "," . $obj->getSemestre() . ");";
 
-        $resultado = $this->objCon->ejecutar($sql);
-        $this->objCon->respuesta($resultado);
+        $resultado = $this->object->ejecutar($sql);
+        $this->object->respuesta($resultado, 'estudiantes');
     }
 
     public function listar(clsEstudiante $obj) {
         $slq = "select codigo,nombre,apellido,cedula,edad,semestre from estudiante";
-        $resultado = $this->objCon->ejecutar($slq);
+        $resultado = $this->object->ejecutar($slq);
         $this->construirListado($resultado);
     }
 
@@ -62,7 +62,7 @@ class estudianteDAO {
     public function buscar(clsEstudiante $obj) {
         $slq = "select id,codigo,nombre,apellido,cedula,edad,semestre from estudiante "
                 . "WHERE codigo='" . $obj->getCodigo() . "';";
-        $resultado = $this->objCon->ejecutar($slq);
+        $resultado = $this->object->ejecutar($slq);
         $this->construirBusqueda($resultado);
     }
 
@@ -70,15 +70,14 @@ class estudianteDAO {
         $vec = pg_fetch_row($resultado);
 
         if (isset($vec) && $vec[0] != "") {
-            $lista = "document.getElementById('txtId').value='" . $vec[0] . "';";
-            $lista .= "document.getElementById('txtCodigo').value='" . $vec[1] . "';";
-            $lista .= "document.getElementById('txtNombre').value='" . $vec[2] . "';";
-            $lista .= "document.getElementById('txtApellido').value='" . $vec[3] . "';";
-            $lista .= "document.getElementById('txtCedula').value='" . $vec[4] . "';";
-            $lista .= "document.getElementById('txtEdad').value='" . $vec[5] . "';";
-            $lista .= "document.getElementById('txtSemestre').value='" . $vec[6] . "';";
-
-            header('location: ../index.php?page=estudiantes&&message_search=' . $lista);
+            $lista = "id=" . $vec[0] . "&&";
+            $lista .= "codigo=" . $vec[1] . "&&";
+            $lista .= "nombre=" . $vec[2] . "&&";
+            $lista .= "apellido=" . $vec[3] . "&&";
+            $lista .= "cedula=" . $vec[4] . "&&";
+            $lista .= "edad=" . $vec[5] . "&&";
+            $lista .= "semestre=" . $vec[6];
+            header('location: ../index.php?page=estudiantes&&' . $lista);
         } else {
             $mensaje = "No se encontro informacion";
             header('location: ../index.php?page=estudiantes&&message=' . $mensaje);
@@ -91,16 +90,14 @@ class estudianteDAO {
                 ",nombre='" . $obj->getNombre() . "', apellido='" . $obj->getApellido() . "'" .
                 ",cedula='" . $obj->getCedula() . "', edad=" . $obj->getEdad() .
                 ",semestre=" . $obj->getSemestre() . " where id =" . $obj->getId();
-        $resultado = $this->objCon->ejecutar($sql);
-        $this->objCon->respuesta($resultado);
+        $resultado = $this->object->ejecutar($sql);
+        $this->object->respuesta($resultado, 'estudiantes');
     }
 
     public function eliminar(clsEstudiante $obj) {
         $sql = "delete from estudiante where id =" . $obj->getId();
-        $resultado = $this->objCon->ejecutar($sql);
-        $this->objCon->respuesta($resultado);
+        $resultado = $this->object->ejecutar($sql);
+        $this->object->respuesta($resultado, 'estudiantes');
     }
 
 }
-
-?>

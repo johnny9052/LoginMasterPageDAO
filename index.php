@@ -9,23 +9,26 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
         <script type="text/javascript" src="Recursos/js/gestionLogin.js"></script>
+        <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+
         <?php
         session_start();
 
-        if (isset($_GET['message_login'])) {
-            echo $_GET['message_login'];
+
+        if (isset($_REQUEST['infoLogIn'])) {
+            echo $_REQUEST['infoLogIn'];
         }
 
-        if (isset($_SESSION['name_user'])) {
-            echo 'Bienvenido ' . $_SESSION['name_user'];
+        if (isset($_SESSION['nameUser'])) {
+            echo 'Bienvenido ' . $_SESSION['nameUser'];
         }
 
-        if (isset($_SESSION['name_user'])) {
+        if (isset($_SESSION['nameUser'])) {
             include 'Vista/masterPage.php';
         } else {
-            include 'Vista/login.php';
+            include 'Vista/logIn.php';
         }
         ?>
     </body>

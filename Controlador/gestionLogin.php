@@ -1,34 +1,31 @@
 <?php
 
-include '../Modelo/clsLogin.php';
-include '../DAO/loginDAO.php';
+include '../Modelo/LogIn.php';
+include '../DAO/logInDAO.php';
 
-isset($_POST['type']) ? $accion = $_POST['type'] : $accion = "";
-isset($_POST['usuario']) ? $usuario = $_POST['usuario'] : $usuario = "";
-isset($_POST['password']) ? $password = $_POST['password'] : $password = "";
+isset($_REQUEST['type']) ? $type = $_REQUEST['type'] : $type = "";
+isset($_REQUEST['usuario']) ? $usuario = $_REQUEST['usuario'] : $usuario = "";
+isset($_REQUEST['password']) ? $password = $_REQUEST['password'] : $password = "";
 
 session_start();
 
-$login = new clsLogin($usuario, $password);
-$dao = new LoginDAO();
+$login = new LogIn($usuario, $password);
+$dao = new LogInDAO();
 
 $mensaje = "";
-echo $accion.'sada';
-switch ($accion) {
+
+switch ($type) {
+    
     case "con":
-        if ($dao->ingresar($login)) {
-            $_SESSION['name_user'] = $dao->ingresar($login);
-            
-        } else {
+        if (!$dao->ingresar($login)) {
             $mensaje = "El usuario no existe";
         }
         break;
-
+        
     case "desc":        
-        echo 'me fui';
         session_destroy();
         $mensaje = "Se ha cerrado la sesion";
         break;
 }
 
-header('location:../index.php?message_login=' . $mensaje);
+header('location:../index.php?infoLogIn=' . $mensaje);

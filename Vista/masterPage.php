@@ -23,8 +23,8 @@ and open the template in the editor.
 
                 <td style="width: 80%">
                     <?php
-                    if (isset($_GET['page'])) {
-                        include $_GET['page'] . ".php";
+                    if (isset($_REQUEST['page'])) {
+                        include $_REQUEST['page'] . ".php";
                     } else {
                         include 'inicio.php';
                     }
@@ -33,14 +33,16 @@ and open the template in the editor.
             </tr>
         </table>
 
-        <form name="formularioLogOut" method="post" action="Controlador/gestionLogin.php">
+        <form name="formularioLogOut" id="formLogOut" method="post" 
+              action="Controlador/gestionLogin.php" 
+              onsubmit="return logIn('desc');">
             <table>
                 <tr>
                     <td>
                         <input type="text" id="txtTypeLog" name="type" style="display: none">
                     </td>
                     <td>
-                        <input type="button" value="desconectar" id="btnDesconectar" onclick="validarLogin(formularioLogOut, 'desc');">
+                        <button type="submit" value="desconectar" id="btnDesconectar">Desconectar</button>
                     </td>
                 </tr>
             </table>

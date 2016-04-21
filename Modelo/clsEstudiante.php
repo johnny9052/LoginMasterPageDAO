@@ -79,6 +79,3 @@ class clsEstudiante {
         $this->semestre=$semestre;
     }
 }
-
-
-?>

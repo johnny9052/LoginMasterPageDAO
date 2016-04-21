@@ -3,7 +3,7 @@
 class generalDAO {
 
     private $con;
-    private $objCon;
+    private $object;
 
     function generalDAO($tipo) {
 
@@ -13,19 +13,19 @@ class generalDAO {
             require '../Modelo/clsConexion.php';
         }
 
-        $this->objCon = new clsConexion();
-        $this->con = $this->objCon->conectar();
+        $this->object = new clsConexion();
+        $this->con = $this->object->conectar();
     }
 
     public function listarDepartamento(clsGeneral $obj) {
         $slq = "select id,nombre from departamento";
-        $resultado = $this->objCon->ejecutar($slq);
+        $resultado = $this->object->ejecutar($slq);
         $this->construirOptionsSelectDirecto($resultado);
     }
 
     public function listarMunicipio(clsGeneral $obj) {
         $slq = "select id,nombre from municipio where id_depto=" . $obj->getId();
-        $resultado = $this->objCon->ejecutar($slq);
+        $resultado = $this->object->ejecutar($slq);
         $this->construirOptionsSelect($resultado, $obj->getPage());
     }
 
@@ -61,5 +61,3 @@ class generalDAO {
     }
 
 }
-
-?>

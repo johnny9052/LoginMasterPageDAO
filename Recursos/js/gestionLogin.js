@@ -1,17 +1,13 @@
 
-function validarLogin(formulario, tipo) {
+
+function logIn(tipo) {
+
+    var formulario = document.getElementById("formLogIn");
     document.getElementById("txtTypeLog").value = tipo;
 
-    if (tipo === "con") {
-        if (document.getElementById("txtUsuario").value !== "" &&
-                document.getElementById("txtPassword").value !== "") {
-            formulario.submit();
-        } else {
-            alert("Ingrese datos");
-        }
-    }
-
-    if (tipo === "desc") {
-        formulario.submit();
+    if (formulario.checkValidity()) {        
+        return true;
+    } else {
+        return false;
     }
 }
