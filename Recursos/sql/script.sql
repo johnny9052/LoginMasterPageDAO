@@ -10,12 +10,13 @@ semestre integer,
 CONSTRAINT estudiante_pkey PRIMARY KEY (id)
 );
 
+
 CREATE TABLE usuario
 (
-  usuario character varying(15) NOT NULL,
-  nombre character varying(50),
-  password character varying(50),
-  CONSTRAINT usuario_pkey PRIMARY KEY (usuario)
+  nickname varchar(15),
+  nombre varchar(50),
+  password varchar(50),
+  primary key(nickname) 
 )
 
 

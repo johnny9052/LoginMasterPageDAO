@@ -6,12 +6,12 @@ class estudianteDAO {
     private $object;
 
     function estudianteDAO() {
-        require '../Modelo/clsConexion.php';
-        $this->object = new clsConexion();
+        require '../Infraestructura/Conexion.php';
+        $this->object = new Conexion();
         $this->con = $this->object->conectar();
     }
 
-    public function guardar(clsEstudiante $obj) {
+    public function guardar(Estudiante $obj) {
 
         $sql = "insert into estudiante(codigo,nombre,apellido,cedula,edad,semestre) values('" .
                 $obj->getCodigo() . "','" . $obj->getNombre() . "','" . $obj->getApellido() . "','" . $obj->getCedula() . "'," .
@@ -21,7 +21,7 @@ class estudianteDAO {
         $this->object->respuesta($resultado, 'estudiantes');
     }
 
-    public function listar(clsEstudiante $obj) {
+    public function listar(Estudiante $obj) {
         $slq = "select codigo,nombre,apellido,cedula,edad,semestre from estudiante";
         $resultado = $this->object->ejecutar($slq);
         $this->construirListado($resultado);
@@ -59,7 +59,7 @@ class estudianteDAO {
         header('location: ../index.php?page=estudiantes&&info_list=' . $cadenaHTML);
     }
 
-    public function buscar(clsEstudiante $obj) {
+    public function buscar(Estudiante $obj) {
         $slq = "select id,codigo,nombre,apellido,cedula,edad,semestre from estudiante "
                 . "WHERE codigo='" . $obj->getCodigo() . "';";
         $resultado = $this->object->ejecutar($slq);
@@ -84,8 +84,7 @@ class estudianteDAO {
         }
     }
 
-    public function modificar(clsEstudiante $obj) {
-
+    public function modificar(Estudiante $obj) {
         $sql = "update estudiante set codigo='" . $obj->getCodigo() . "'" .
                 ",nombre='" . $obj->getNombre() . "', apellido='" . $obj->getApellido() . "'" .
                 ",cedula='" . $obj->getCedula() . "', edad=" . $obj->getEdad() .
@@ -94,7 +93,7 @@ class estudianteDAO {
         $this->object->respuesta($resultado, 'estudiantes');
     }
 
-    public function eliminar(clsEstudiante $obj) {
+    public function eliminar(Estudiante $obj) {
         $sql = "delete from estudiante where id =" . $obj->getId();
         $resultado = $this->object->ejecutar($sql);
         $this->object->respuesta($resultado, 'estudiantes');

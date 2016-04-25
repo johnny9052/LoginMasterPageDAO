@@ -1,11 +1,11 @@
 <?php
 
-class clsGeneral {
+class General {
 
     private $id;
     private $page;
 
-    function clsGeneral($id, $page) {
+    function General($id, $page) {
         $this->id = $id;
         $this->page = $page;
     }

@@ -1,6 +1,6 @@
 <?php
 
-class clsConexion {
+class Conexion {
 
     private $usuario;
     private $password;

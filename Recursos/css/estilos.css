@@ -5,3 +5,11 @@
 .oculto{
     display: none;
 }
+
+.menu{
+    width: 20%;
+}
+
+.contenido{
+    width: 80%;
+}

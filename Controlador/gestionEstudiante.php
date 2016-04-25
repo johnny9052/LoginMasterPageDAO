@@ -1,6 +1,6 @@
 <?php
 
-require '../Modelo/clsEstudiante.php';
+require '../Modelo/Estudiante.php';
 require '../DAO/estudianteDAO.php';
 
 isset($_REQUEST['id']) ? $id = $_REQUEST['id'] : $id = "";
@@ -12,7 +12,7 @@ isset($_REQUEST['edad']) ? $edad = $_REQUEST['edad'] : $edad = "";
 isset($_REQUEST['semestre']) ? $semestre = $_REQUEST['semestre'] : $semestre = "";
 isset($_REQUEST['type']) ? $accion = $_REQUEST['type'] : $accion = "";
 
-$estudiante = new clsEstudiante($id, $codigo, $nombre, $apellido, $cedula, $edad, $semestre);
+$estudiante = new Estudiante($id, $codigo, $nombre, $apellido, $cedula, $edad, $semestre);
 $dao = new estudianteDAO();
 
 switch ($accion) {

@@ -28,9 +28,9 @@ and open the template in the editor.
                     <select id="selDepartamento" onchange="listarMunicipio(formularioSelect);">
                         <option id="-1">Seleccione opcion</option>
                         <?php
-                        require 'Modelo/clsGeneral.php';
+                        require 'Modelo/General.php';
                         require 'DAO/generalDAO.php';
-                        $depto = new clsGeneral("","");
+                        $depto = new General("","");
                         $dao = new generalDAO(1);
                         $dao->listarDepartamento($depto);
                         ?>

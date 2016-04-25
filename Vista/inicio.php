@@ -10,14 +10,6 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        Estamos en el inicio
-        
-        <table border="1">
-            <tr>
-                <td>
-                    sdfsfsdf
-                </td>
-            </tr>
-        </table>
+        Estamos en el inicio              
     </body>
 </html>

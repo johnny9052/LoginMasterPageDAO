@@ -2,20 +2,20 @@
 
 class LogIn {
 
-    private $usuario;
+    private $nickname;
     private $password;
 
-    public function __construct($usuario, $password) {
-        $this->usuario = $usuario;
+    public function __construct($nickname, $password) {
+        $this->nickname = $nickname;
         $this->password = $password;
     }
 
-    public function getUsuario() {
-        return $this->usuario;
+    public function getNickName() {
+        return $this->nickname;
     }
 
-    public function setUsuario($usuario) {
-        $this->usuario = $usuario;
+    public function setNickName($nickname) {
+        $this->nickname = $nickname;
     }
 
     public function getPassword() {

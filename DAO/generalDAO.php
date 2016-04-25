@@ -8,22 +8,22 @@ class generalDAO {
     function generalDAO($tipo) {
 
         if ($tipo == 1) {
-            require 'Modelo/clsConexion.php';
+            require 'Infraestructura/Conexion.php';
         } else {
-            require '../Modelo/clsConexion.php';
+            require '../Infraestructura/Conexion.php';
         }
 
-        $this->object = new clsConexion();
+        $this->object = new Conexion();
         $this->con = $this->object->conectar();
     }
 
-    public function listarDepartamento(clsGeneral $obj) {
+    public function listarDepartamento(General $obj) {
         $slq = "select id,nombre from departamento";
         $resultado = $this->object->ejecutar($slq);
         $this->construirOptionsSelectDirecto($resultado);
     }
 
-    public function listarMunicipio(clsGeneral $obj) {
+    public function listarMunicipio(General $obj) {
         $slq = "select id,nombre from municipio where id_depto=" . $obj->getId();
         $resultado = $this->object->ejecutar($slq);
         $this->construirOptionsSelect($resultado, $obj->getPage());

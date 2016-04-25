@@ -1,6 +1,6 @@
 <?php
 
-class clsEstudiante {
+class Estudiante {
     
     private $id;
     private $codigo;
@@ -11,7 +11,7 @@ class clsEstudiante {
     private $semestre;
     
     
-    function clsEstudiante($id,$codigo,$nombre,$apellido,$cedula,$edad,$semestre){
+    function Estudiante($id,$codigo,$nombre,$apellido,$cedula,$edad,$semestre){
         $this->id=$id;
         $this->codigo=$codigo;
         $this->nombre=$nombre;

@@ -14,14 +14,14 @@ and open the template in the editor.
 
         <table border="1">
             <tr>
-                <td style="width: 20%">
+                <td class="menu">
                     <a href="index.php">Inicio</a><br>
                     <a href="index.php?page=usuarios">Usuarios</a><br>
                     <a href="index.php?page=eventos">Eventos</a><br>
                     <a href="index.php?page=estudiantes">Estudiantes</a><br>
                 </td>
 
-                <td style="width: 80%">
+                <td class="contenido">
                     <?php
                     if (isset($_REQUEST['page'])) {
                         include $_REQUEST['page'] . ".php";
@@ -39,7 +39,7 @@ and open the template in the editor.
             <table>
                 <tr>
                     <td>
-                        <input type="text" id="txtTypeLog" name="type" style="display: none">
+                        <input type="text" id="txtTypeLog" name="type" class="oculto">
                     </td>
                     <td>
                         <button type="submit" value="desconectar" id="btnDesconectar">Desconectar</button>
