@@ -14,7 +14,7 @@ class LogInDAO {
     function ingresar(LogIn $obj) {
         $sql = "SELECT nombre,nickname,password "
                 . "from usuario "
-                . "where nickname='" . $obj->getNickName() . "' AND password='" . $obj->getPassword() . "'";
+                . "where nickname='" . $obj->getNickName() . "' AND password='" . md5($obj->getPassword()) . "'";
 
         $resultado = $this->object->ejecutar($sql);
         return $this->object->validarLogin($resultado);

@@ -30,6 +30,8 @@ and open the template in the editor.
         } else {
             include 'Vista/logIn.php';
         }
+
+        //echo md5("123");
         ?>
     </body>
 </html>
