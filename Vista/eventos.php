@@ -47,8 +47,8 @@ and open the template in the editor.
                         <option id="-1">Seleccione opcion</option>
 
                         <?php
-                        if (isset($_GET['contenidoSel'])) {
-                            echo $_GET['contenidoSel'];
+                        if (isset($_REQUEST['contenidoSel'])) {
+                            echo $_REQUEST['contenidoSel'];
                         }
                         ?>
                     </select>
