@@ -57,6 +57,18 @@ class generalDAO {
         } else {
             $cadenaHTML .="<b>No hay registros en la base de datos</b>";
         }
+
+        /* Se recuperan las variables que hayan sido diligenciadas del formulario */
+        $variablesTemporales = "&&";
+        if ($page == "eventos") {
+            $variablesTemporales .= "departamento=document.getElementById('selDepartamento').value="
+                    . (isset($_REQUEST['departamento']) ? $_REQUEST['departamento'] : "-1" . ";");
+        }
+
+
+
+        $cadenaHTML .=$variablesTemporales;
+
         header('location: ../index.php?page=' . $page . '&&contenidoSel=' . $cadenaHTML);
     }
 
