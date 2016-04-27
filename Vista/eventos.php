@@ -59,7 +59,7 @@ and open the template in the editor.
 
         <?php
         if (isset($_REQUEST['departamento'])) {
-            echo "<script type'text/javascript'>" . $_REQUEST['departamento'] . "</script>";
+            echo "<script type='text/javascript'>" . $_REQUEST['departamento'] . "</script>";
         }
         ?>
     </body>
