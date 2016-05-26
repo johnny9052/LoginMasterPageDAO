@@ -17,6 +17,8 @@ class estudianteDAO {
                 $obj->getCodigo() . "','" . $obj->getNombre() . "','" . $obj->getApellido() . "','" . $obj->getCedula() . "'," .
                 $obj->getEdad() . "," . $obj->getSemestre() . ");";
 
+        //echo $sql;
+        
         $resultado = $this->object->ejecutar($sql);
         $this->object->respuesta($resultado, 'estudiantes');
     }

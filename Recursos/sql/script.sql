@@ -1,7 +1,7 @@
 
 Create table Estudiante(
 id SERIAL,
-codigo integer,
+codigo varchar(20),
 nombre varchar(30),
 apellido varchar(50),
 cedula varchar(20),
